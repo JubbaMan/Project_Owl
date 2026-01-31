@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Home = () => {
   const { user } = useAuth();
   const [hoots, setHoots] = useState([]);
@@ -11,7 +13,7 @@ const Home = () => {
   // Fetch hoots from backend
   const fetchHoots = async () => {
     try {
-      const res = await fetch("http://localhost:8080/hoots");
+      const res = await fetch(`${API_URL}/hoots`);
       const data = await res.json();
       setHoots(data.hoots || []);
     } catch (err) {
@@ -29,7 +31,7 @@ const Home = () => {
   const handleDelete = async (hootId) => {
     if (!confirm("Delete this hoot?")) return;
     try {
-      const res = await fetch(`http://localhost:8080/hoots/${hootId}`, {
+      const res = await fetch(`${API_URL}/${hootId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.access_token}` },
       });

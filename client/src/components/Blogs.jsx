@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Blogs = () => {
   const { user } = useAuth();
   const [hoots, setHoots] = useState([]);
@@ -26,7 +28,7 @@ const Blogs = () => {
   const handleDelete = async (hootId) => {
     if (!confirm("Delete this hoot?")) return;
     try {
-      const res = await fetch(`http://localhost:8080/hoots/${hootId}`, {
+      const res = await fetch(`${API_URL}/hoots/${hootId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.access_token}` },
       });

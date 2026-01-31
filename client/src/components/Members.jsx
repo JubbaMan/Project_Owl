@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const Members = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -8,7 +11,7 @@ const Members = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const res = await fetch("http://localhost:8080/users"); // make sure your backend has this route
+        const res = await fetch(`${API_URL}/users`); // make sure your backend has this route
         const data = await res.json();
         setMembers(data.users || []);
       } catch (err) {

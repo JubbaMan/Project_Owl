@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const CreateHoot = () => {
   const { user, token } = useAuth(); // ✅ use token from context
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const CreateHoot = () => {
     formData.append("content", content);
 
     try {
-      const res = await fetch("http://localhost:8080/hoots", {
+      const res = await fetch(`${API_URL}/hoots`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 const Blogs = () => {
   const { user } = useAuth();
   const [hoots, setHoots] = useState([]);
@@ -11,12 +9,12 @@ const Blogs = () => {
 
   const fetchHoots = async () => {
     try {
-      const res = await fetch("http://localhost:8080/hoots");
+      const res = await fetch("https://theowlshub.vercel.app/hoots");
       const data = await res.json();
       setHoots(data.hoots || []);
     } catch (err) {
       console.error(err);
-    } finally {
+    } finally {hoots
       setLoading(false);
     }
   };

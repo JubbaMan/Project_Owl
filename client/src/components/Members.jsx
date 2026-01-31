@@ -11,7 +11,7 @@ const Members = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const res = await fetch(`${API_URL}/users`); // make sure your backend has this route
+        const res = await fetch("https://theowlshub.vercel.app/users"); // make sure your backend has this route
         const data = await res.json();
         setMembers(data.users || []);
       } catch (err) {

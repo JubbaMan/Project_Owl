@@ -13,7 +13,7 @@ const Home = () => {
   // Fetch hoots from backend
   const fetchHoots = async () => {
     try {
-      const res = await fetch(`${API_URL}/hoots`);
+      const res = await fetch("https://theowlshub.vercel.app/hoots");
       const data = await res.json();
       setHoots(data.hoots || []);
     } catch (err) {
@@ -31,7 +31,7 @@ const Home = () => {
   const handleDelete = async (hootId) => {
     if (!confirm("Delete this hoot?")) return;
     try {
-      const res = await fetch(`${API_URL}/${hootId}`, {
+      const res = await fetch(`https://theowlshub.vercel.app/${hootId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.access_token}` },
       });

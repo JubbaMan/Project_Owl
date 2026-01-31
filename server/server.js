@@ -19,7 +19,10 @@ const JWT_SECRET = process.env.JWT_SECRET || "super_secret_owl_key";
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.error("MongoDB connection error:", err));
+
 
 // ===== MIDDLEWARE =====
 app.use(

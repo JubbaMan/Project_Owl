@@ -27,7 +27,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/signup`, {
+      const res = await fetch("https://theowlshub.vercel.app/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullName, email, password }),

@@ -31,7 +31,7 @@ mongoose.connect(
 );
 
 // ===== MIDDLEWARE =====
-app.use(cors({ origin: ["http://localhost:5173"] }));
+app.use(cors({ origin: ["https://theowlshub.vercel.app/"] }));
 app.use(express.json());
 app.use("/uploads", express.static(uploadDir));
 

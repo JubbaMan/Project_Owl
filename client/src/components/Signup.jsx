@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 const Signup = () => {
   const navigate = useNavigate();
   const { login } = useAuth();

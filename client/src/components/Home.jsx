@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 const Home = () => {
   const { user } = useAuth();
   const [hoots, setHoots] = useState([]);

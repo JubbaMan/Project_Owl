@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext"; // make sure you have AuthContext
 
-const res = await fetch(`${API_URL}/hoots`);
-
 const Signin = () => {
   const navigate = useNavigate();
   const { login } = useAuth();

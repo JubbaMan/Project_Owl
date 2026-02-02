@@ -36,7 +36,7 @@ const CreateHoot = () => {
     formData.append("content", content);
 
     try {
-      const res = await fetch("https://theowlshub.vecel.app/hoots", {
+      const res = await fetch("https://project-owl.onrender.com/hoots", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

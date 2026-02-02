@@ -9,7 +9,7 @@ const Blogs = () => {
 
   const fetchHoots = async () => {
     try {
-      const res = await fetch("https://theowlshub.vercel.app/hoots");
+      const res = await fetch("https://project-owl.onrender.com/hoots");
       const data = await res.json();
       setHoots(data.hoots || []);
     } catch (err) {

@@ -26,21 +26,7 @@ const Home = () => {
   }, []);
 
   // Delete hoot
-  const handleDelete = async (hootId) => {
-    if (!confirm("Delete this hoot?")) return;
-    try {
-      const res = await fetch(`https://project-owl.onrender.com/${hootId}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${user.access_token}` },
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to delete hoot");
-      // Remove from UI
-      setHoots((prev) => prev.filter((h) => h._id !== hootId));
-    } catch (err) {
-      alert(err.message);
-    }
-  };
+ 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white">
@@ -121,14 +107,7 @@ const Home = () => {
 
                   {/* Delete Button for author */}
                   {/* Delete Button for author */}
-                  {user?.id && String(hoot.authorId) === String(user.id) && (
-                    <button
-                      onClick={() => handleDelete(hoot._id)}
-                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full mt-2 text-sm"
-                    >
-                      Delete
-                    </button>
-                  )}
+                  
 
 
                 </div>

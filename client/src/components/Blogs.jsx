@@ -26,7 +26,7 @@ const Blogs = () => {
   const handleDelete = async (hootId) => {
     if (!confirm("Delete this hoot?")) return;
     try {
-      const res = await fetch(`${API_URL}/hoots/${hootId}`, {
+      const res = await fetch(`https://project-owl.onrender.com/hoots/${hootId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.access_token}` },
       });

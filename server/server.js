@@ -16,10 +16,7 @@ const port = process.env.PORT || 8080;
 const JWT_SECRET = process.env.JWT_SECRET || "super_secret_owl_key";
 
 // ===== DB =====
-mongoose.connect("mongodb+srv://jubbathegreat_db_user:4ZCZV6AZEuhTTDC6@cluster1.frgoogq.mongodb.net/?appName=Cluster1", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect("mongodb+srv://jubbathegreat_db_user:4ZCZV6AZEuhTTDC6@cluster1.frgoogq.mongodb.net/?appName=Cluster1")
 .then(() => console.log("MongoDB connected"))
 .catch((err) => console.error("MongoDB connection error:", err));
 

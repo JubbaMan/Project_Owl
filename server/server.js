@@ -16,7 +16,7 @@ const port = process.env.PORT || 8080;
 const JWT_SECRET = process.env.JWT_SECRET || "super_secret_owl_key";
 
 // ===== DB =====
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect("mongodb+srv://jubbathegreat_db_user:4ZCZV6AZEuhTTDC6@cluster1.frgoogq.mongodb.net/?appName=Cluster1", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

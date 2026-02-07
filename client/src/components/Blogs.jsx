@@ -63,7 +63,7 @@ const Blogs = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12 pt-39"
+        className="text-center mb-12 pt-39 "
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-3">
           All Hoots 🦉
@@ -79,7 +79,7 @@ const Blogs = () => {
       ) : hoots.length === 0 ? (
         <p className="text-gray-100 text-center">No hoots yet. Silence of the owls.</p>
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 pl-10 pr-10">
           {hoots.map((hoot) => (
             <motion.div
               key={hoot._id}

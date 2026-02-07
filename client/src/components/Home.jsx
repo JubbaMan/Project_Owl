@@ -90,43 +90,32 @@ const Home = () => {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hoots.map((hoot) => (
-              <motion.div
-                key={hoot._id}
-                whileHover={{ scale: 1.03 }}
-                className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col"
-              >
-                {/* Hoot Image
-                {hoot.image && (
-                  <div className="w-full aspect-[4/5] bg-black overflow-hidden">
-                    <img
-                      src={`http://localhost:8080${hoot.image}`}
-                      alt={hoot.title || "Hoot image"}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )} */}
+             <motion.div
+  key={hoot._id}
+  whileHover={{ scale: 1.03 }}
+  className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden flex flex-col relative"
+>
+  {/* Decorative icons */}
+  <FaMoon className="absolute top-2 left-2 text-purple-400/50 text-xl animate-pulse" />
+  <FaStar className="absolute top-2 right-2 text-yellow-400/60 text-lg animate-bounce" />
+  <FaFeather className="absolute bottom-2 right-4 text-white/40 text-lg rotate-12" />
 
-                {/* Hoot Content */}
-                <div className="p-4 flex flex-col flex-1">
-                  {hoot.title && (
-                    <h3 className="text-xl font-semibold mb-2 text-purple-400">
-                      {hoot.title}
-                    </h3>
-                  )}
-                  {hoot.content && (
-                    <p className="text-gray-300 mb-4">{hoot.content}</p>
-                  )}
-                  <p className="text-gray-500 text-sm mt-auto">
-                    🦉 {hoot.authorName} • {new Date(hoot.createdAt).toLocaleString()}
-                  </p>
+  {/* Hoot content */}
+  <div className="p-4 flex flex-col flex-1">
+    {hoot.title && (
+      <h3 className="text-xl font-semibold mb-2 text-purple-400">
+        {hoot.title}
+      </h3>
+    )}
+    {hoot.content && (
+      <p className="text-gray-300 mb-4">{hoot.content}</p>
+    )}
+    <p className="text-gray-500 text-sm mt-auto">
+      🦉 {hoot.authorName} • {new Date(hoot.createdAt).toLocaleString()}
+    </p>
+  </div>
+</motion.div>
 
-                  {/* Delete Button for author */}
-                  {/* Delete Button for author */}
-                  
-
-
-                </div>
-              </motion.div>
             ))}
           </div>
         )}

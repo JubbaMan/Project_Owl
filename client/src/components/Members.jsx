@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import DarkVeil from "./DarkVeil";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
 const Members = () => {
@@ -23,8 +26,23 @@ const Members = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white px-6 py-12">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-purple-400 text-center mb-8">
+    <>
+   <div className="relative w-full min-h-screen overflow-hidden ">
+       
+       {/* Background */}
+       <div className="absolute inset-0 -z-10 ">
+         <DarkVeil
+           hueShift={314}
+           noiseIntensity={0.02}
+           scanlineIntensity={0}
+           speed={0.8}
+           scanlineFrequency={0}
+           warpAmount={0.5}
+         />
+       </div>
+      <Navbar />
+      <main >
+        <h1 className="text-4xl md:text-5xl font-extrabold text-purple-400 text-center mb-8 mt-46">
         Night Owl Members 🦉
       </h1>
 
@@ -52,7 +70,10 @@ const Members = () => {
           ))}
         </div>
       )}
+      </main>
     </div>
+      <Footer />
+    </>
   );
 };
 

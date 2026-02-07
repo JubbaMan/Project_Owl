@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import DarkVeil from './DarkVeil';
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Home = () => {
   const { user } = useAuth();
@@ -29,15 +32,27 @@ const Home = () => {
  
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white">
-
-      {/* Hero Section */}
+   <div className="relative w-full overflow-x-hidden scrollbar-none">
+    
+    {/* Background */}
+    <div className="fixed inset-0 -z-10 ">
+      <DarkVeil
+        hueShift={314}
+        noiseIntensity={0.02}
+        scanlineIntensity={0}
+        speed={0.8}
+        scanlineFrequency={0}
+        warpAmount={0.5}
+      />
+    </div>
+   <Navbar />
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="flex flex-col items-center justify-center text-center py-24 px-4"
+        className="flex flex-col items-center justify-center text-center py-24 px-4 pt-45"
       >
+      
         <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-purple-400 drop-shadow-lg">
           Welcome, Night Owl
         </h1>
@@ -119,7 +134,7 @@ const Home = () => {
 
       {/* Footer CTA */}
       {!user && (
-        <div className="bg-gray-900 py-12 text-center">
+        <div className="bg-transparent py-12 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-purple-400 mb-4">
             Join the Night Owl Community
           </h2>
@@ -134,6 +149,7 @@ const Home = () => {
           </Link>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

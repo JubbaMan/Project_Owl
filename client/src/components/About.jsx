@@ -1,16 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import DarkVeil from "./DarkVeil";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 const About = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white px-6 md:px-20 py-20">
-      
+    <>
+   <div className="relative w-full min-h-screen overflow-hidden ">
+       
+       {/* Background */}
+       <div className="absolute inset-0 -z-10 ">
+         <DarkVeil
+           hueShift={314}
+           noiseIntensity={0.02}
+           scanlineIntensity={0}
+           speed={0.8}
+           scanlineFrequency={0}
+           warpAmount={0.5}
+         />
+       </div>
+      <Navbar />
       {/* Heading */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-8 text-center"
+        className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-8 text-center pt-40"
       >
         About The Owl’s Hub 🦉
       </motion.h1>
@@ -47,6 +62,8 @@ const About = () => {
       </motion.div>
 
     </div>
+    <Footer />
+    </>
   );
 };
 

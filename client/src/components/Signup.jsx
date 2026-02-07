@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import Footer from "./Footer";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ const Signup = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 via-purple-900 to-black">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -173,6 +175,8 @@ const Signup = () => {
         </p>
       </motion.div>
     </div>
+    <Footer />
+    </>
   );
 };
 

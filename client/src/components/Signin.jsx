@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext"; // make sure you have AuthContext
+import Footer from "./Footer";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const Signin = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 via-purple-900 to-black">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -141,6 +143,8 @@ const Signin = () => {
         </p>
       </motion.div>
     </div>
+    <Footer />
+    </>
   );
 };
 

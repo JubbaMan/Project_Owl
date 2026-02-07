@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { FaGithub, FaInstagram, FaDiscord, FaEnvelope } from "react-icons/fa";
-
+import DarkVeil from "./DarkVeil";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 const Contact = () => {
   const [form, setForm] = useState({
     name: "",
@@ -10,8 +12,22 @@ const Contact = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white flex items-center justify-center px-4 py-12">
-      <div className="bg-gray-800 w-full max-w-lg rounded-2xl shadow-xl p-8 flex flex-col gap-6">
+    <>
+    <div className="relative w-full min-h-screen overflow-hidden text-white">
+    
+    {/* Background */}
+    <div className="absolute inset-0 -z-10 ">
+      <DarkVeil
+        hueShift={314}
+        noiseIntensity={0.02}
+        scanlineIntensity={0}
+        speed={0.8}
+        scanlineFrequency={0}
+        warpAmount={0.5}
+      />
+    </div>
+   <Navbar />
+      <div className="bg-gray-800 w-full max-w-lg rounded-4xl shadow-xl p-8 flex flex-col gap-6 m-auto mt-53 sm:w-[75%]">
         <h1 className="text-3xl font-extrabold text-purple-400 text-center">
           Contact the Owl 🦉
         </h1>
@@ -60,6 +76,8 @@ const Contact = () => {
         </p>
       </div>
     </div>
+      <Footer />
+      </>
   );
 };
 

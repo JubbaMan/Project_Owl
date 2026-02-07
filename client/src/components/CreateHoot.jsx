@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import DarkVeil from "./DarkVeil";
+import Navbar from "./Navbar";
 
 
 const CreateHoot = () => {
@@ -71,7 +73,21 @@ const CreateHoot = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+    <>
+   <div className="relative w-full min-h-screen overflow-hidden ">
+    
+    {/* Background */}
+    <div className="absolute inset-0 -z-10 ">
+      <DarkVeil
+        hueShift={314}
+        noiseIntensity={0.02}
+        scanlineIntensity={0}
+        speed={0.8}
+        scanlineFrequency={0}
+        warpAmount={0.5}
+      />
+    </div>
+   <Navbar />
       <form
         onSubmit={handleSubmit}
         className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col gap-4"
@@ -115,6 +131,8 @@ const CreateHoot = () => {
         </button>
       </form>
     </div>
+      <Footer />
+    </>
   );
 };
 

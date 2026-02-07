@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import DarkVeil from "./DarkVeil";
+import Navbar from "./Navbar";
+
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -37,7 +40,21 @@ const CreatePost = () => {
   if (!user) return <p className="p-4 text-center text-red-500">Please log in to create a post</p>;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+    <>
+   <div className="relative w-full min-h-screen overflow-hidden ">
+    
+    {/* Background */}
+    <div className="absolute inset-0 -z-10 ">
+      <DarkVeil
+        hueShift={314}
+        noiseIntensity={0.02}
+        scanlineIntensity={0}
+        speed={0.8}
+        scanlineFrequency={0}
+        warpAmount={0.5}
+      />
+    </div>
+   <Navbar />
       <form className="bg-gray-800 p-8 rounded-xl w-full max-w-lg space-y-4" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold text-purple-400 mb-4">Create Post</h2>
         {error && <p className="text-red-500">{error}</p>}
@@ -60,6 +77,8 @@ const CreatePost = () => {
         </button>
       </form>
     </div>
+      <Footer />
+      </>
   );
 };
 

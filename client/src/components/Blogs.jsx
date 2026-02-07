@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import DarkVeil from "./DarkVeil";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
 
 const Blogs = () => {
   const { user } = useAuth();
@@ -39,27 +43,41 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white px-6 md:px-20 py-16">
+      <>
+    <div className="relative w-full min-h-screen overflow-hidden ">
+    
+    {/* Background */}
+    <div className="absolute inset-0 -z-10 ">
+      <DarkVeil
+        hueShift={314}
+        noiseIntensity={0.02}
+        scanlineIntensity={0}
+        speed={0.8}
+        scanlineFrequency={0}
+        warpAmount={0.5}
+      />
+    </div>
+   <Navbar />
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12"
+        className="text-center mb-12 pt-39"
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-3">
           All Hoots 🦉
         </h1>
-        <p className="text-gray-400 max-w-xl mx-auto">
+        <p className="text-gray-100 max-w-xl mx-auto">
           Every hoot, every meme, every late-night thought — all in one place.
         </p>
       </motion.div>
 
       {/* Hoots Grid */}
       {loading ? (
-        <p className="text-gray-400 text-center">Loading hoots...</p>
+        <p className="text-gray-100 text-center">Loading hoots...</p>
       ) : hoots.length === 0 ? (
-        <p className="text-gray-400 text-center">No hoots yet. Silence of the owls.</p>
+        <p className="text-gray-100 text-center">No hoots yet. Silence of the owls.</p>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {hoots.map((hoot) => (
@@ -110,6 +128,8 @@ const Blogs = () => {
         </div>
       )}
     </div>
+      <Footer />
+      </>
   );
 };
 

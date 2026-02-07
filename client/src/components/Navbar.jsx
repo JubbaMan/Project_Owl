@@ -3,16 +3,15 @@ import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
-
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <>
-      <nav className="bg-black/70 backdrop-blur-md sticky top-0 z-50 shadow-md">
+    <div>
+       <nav className="fixed w-full top-0 z-50 bg-[#0000003c] backdrop-blur-[8px] h-[13vh] shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+          <div className="flex justify-between h-[13vh] items-center">
             {/* Logo */}
             <div className="flex items-center gap-3">
               <Link to="/">
@@ -146,7 +145,7 @@ const Navbar = () => {
 
       {/* Outlet for nested routes */}
       <Outlet />
-    </>
+    </div>
   );
 };
 

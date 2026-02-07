@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import CreateHoot from "./components/CreateHoot"; // <-- import it
 import About from "./components/About";
-import Blogs from "./components/Blogs";
+import Blogs from "./components/Blogs";   
 import { AuthProvider } from "./context/AuthContext";
 import Contact from "./components/Contact";
 import Members from "./components/Members";
@@ -15,7 +15,6 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />

@@ -3,8 +3,8 @@ import { FaGithub, FaInstagram, FaDiscord, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-black/70 backdrop-blur-md border-t border-purple-500/20">
-      <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="foota w-full bg-black/70 backdrop-blur-md border-t border-purple-500/20 ">
+      <div className=" max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 ">
         
         {/* Left text */}
         <p className="text-gray-400 text-sm text-center md:text-left">

@@ -75,7 +75,7 @@ const CreateHoot = () => {
 
   return (
     <>
-   <div className="relative w-full min-h-screen overflow-hidden m-auto mt-35">
+   <div className="relative w-full min-h-screen overflow-hidden ">
     
     {/* Background */}
     <div className="absolute inset-0 -z-10 ">
@@ -91,7 +91,7 @@ const CreateHoot = () => {
    <Navbar />
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col gap-4"
+        className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col gap-4 m-auto mt-35"
       >
         <h2 className="text-2xl font-bold text-purple-400 text-center mb-4">
           Create a Hoot 🦉

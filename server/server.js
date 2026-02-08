@@ -24,7 +24,7 @@ mongoose.connect("mongodb+srv://jubbathegreat_db_user:4ZCZV6AZEuhTTDC6@cluster1.
 // ===== MIDDLEWARE =====
 app.use(
   cors({
-    origin: "https://theowlshub.vercel.app",
+    origin: "https://theowlshub.vercel.app" ,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

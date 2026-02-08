@@ -75,7 +75,7 @@ const CreateHoot = () => {
 
   return (
     <>
-   <div className="relative w-full min-h-screen overflow-hidden ">
+   <div className="relative w-full min-h-screen overflow-hidden m-auto mt-35">
     
     {/* Background */}
     <div className="absolute inset-0 -z-10 ">

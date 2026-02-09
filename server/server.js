@@ -116,6 +116,33 @@ app.post("/signin", async (req, res) => {
   }
 });
 
+// Get all users (members)
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find({})
+      .select("personal_info")
+      .lean();
+
+    const formattedUsers = users.map((user) => ({
+      id: user._id.toString(),
+      fullName: user.personal_info.fullName,
+      username: user.personal_info.username,
+      profile_img:
+        user.personal_info.profile_img || "/default-avatar.png",
+    }));
+
+    res.status(200).json({
+      users: formattedUsers,
+    });
+  } catch (err) {
+    console.error("Failed to fetch users:", err);
+    res.status(500).json({
+      error: "Failed to fetch members",
+    });
+  }
+});
+
+
 // Get all hoots
 app.get("/hoots", async (_, res) => {
   const hoots = await Hoot.find().sort({ createdAt: -1 }).lean();

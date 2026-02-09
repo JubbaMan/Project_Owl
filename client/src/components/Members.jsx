@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import DarkVeil from "./DarkVeil";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
 
 const Members = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch members from backend
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const res = await fetch("https://project-owl.onrender.com/users"); // make sure your backend has this route
+        const res = await fetch("https://project-owl.onrender.com/users");
         const data = await res.json();
         setMembers(data.users || []);
       } catch (err) {
@@ -21,57 +20,70 @@ const Members = () => {
         setLoading(false);
       }
     };
-
     fetchMembers();
   }, []);
 
   return (
     <>
-   <div className="relative w-full min-h-screen overflow-hidden ">
-       
-       {/* Background */}
-       <div className="absolute inset-0 -z-10 ">
-         <DarkVeil
-           hueShift={314}
-           noiseIntensity={0.02}
-           scanlineIntensity={0}
-           speed={0.8}
-           scanlineFrequency={0}
-           warpAmount={0.5}
-         />
-       </div>
-      <Navbar />
-      <main >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-purple-400 text-center mb-8 mt-46">
-        Night Owl Members 🦉
-      </h1>
-
-      {loading ? (
-        <p className="text-gray-400 text-center">Loading members...</p>
-      ) : members.length === 0 ? (
-        <p className="text-gray-400 text-center">No members found yet.</p>
-      ) : (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {members.map((member) => (
-            <div
-              key={member.id}
-              className="bg-gray-800 rounded-2xl shadow-lg p-4 flex flex-col items-center text-center hover:shadow-2xl transition"
-            >
-              <img
-                src={member.profile_img || "/default-avatar.png"}
-                alt={member.fullName || member.username}
-                className="w-20 h-20 rounded-full mb-3 object-cover border-2 border-purple-400"
-              />
-              <h3 className="text-xl font-semibold text-purple-400">
-                {member.fullName || "Unknown"}
-              </h3>
-              <p className="text-gray-400 text-sm">@{member.username || "user"}</p>
-            </div>
-          ))}
+      <div className="relative w-full min-h-screen overflow-hidden bg-gray-900">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10">
+          <DarkVeil
+            hueShift={314}
+            noiseIntensity={0.02}
+            scanlineIntensity={0}
+            speed={0.8}
+            scanlineFrequency={0}
+            warpAmount={0.5}
+          />
         </div>
-      )}
-      </main>
-    </div>
+
+        <Navbar />
+
+        <main className="pt-28 px-4 md:px-12 lg:px-20">
+          {/* Animated heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-extrabold text-purple-400 text-center mb-12"
+          >
+            Night Owl Members 🦉
+          </motion.h1>
+
+          {/* Loading / Empty states */}
+          {loading ? (
+            <p className="text-gray-400 text-center text-lg animate-pulse">
+              Loading members...
+            </p>
+          ) : members.length === 0 ? (
+            <p className="text-gray-400 text-center text-lg">No members found yet.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {members.map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:from-purple-700 hover:to-purple-800"
+                >
+                  <img
+                    src={member.profile_img || "/default-avatar.png"}
+                    alt={member.fullName || member.username}
+                    className="w-24 h-24 rounded-full mb-4 object-cover border-2 border-purple-400"
+                  />
+                  <h3 className="text-xl font-semibold text-purple-300 mb-1 truncate">
+                    {member.fullName || "Unknown"}
+                  </h3>
+                  <p className="text-gray-300 text-sm truncate">@{member.username || "user"}</p>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </main>
+      </div>
+
       <Footer />
     </>
   );

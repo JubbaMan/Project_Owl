@@ -44,13 +44,14 @@ const Home = () => {
         scanlineFrequency={0}
         warpAmount={0.5}
       />
+     
     </div>
    <Navbar />
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="flex flex-col items-center justify-center text-center py-24 px-4 pt-45"
+        className="flex flex-col items-center justify-center text-center py-24 px-4 pt-15"
       >
       
         <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-purple-400 drop-shadow-lg">

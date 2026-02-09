@@ -9,7 +9,7 @@ const About = () => {
    <div className="relative w-full min-h-screen overflow-hidden ">
        
        {/* Background */}
-       <div className="absolute inset-0 -z-10 ">
+       <div className="fixed inset-0 -z-10 ">
          <DarkVeil
            hueShift={314}
            noiseIntensity={0.02}
@@ -25,7 +25,7 @@ const About = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-8 text-center pt-40"
+        className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-8 text-center pt-14.5"
       >
         About The Owl’s Hub 🦉
       </motion.h1>

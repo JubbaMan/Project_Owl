@@ -27,7 +27,7 @@ const Members = () => {
     <>
       <div className="relative w-full min-h-screen overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 -z-10">
+        <div className="fixed inset-0 -z-10">
           <DarkVeil
             hueShift={314}
             noiseIntensity={0.02}

@@ -47,7 +47,7 @@ const Blogs = () => {
     <div className="relative w-full min-h-screen overflow-hidden ">
     
     {/* Background */}
-    <div className="absolute inset-0 -z-10 ">
+    <div className="fixed inset-0 -z-10 ">
       <DarkVeil
         hueShift={314}
         noiseIntensity={0.02}
@@ -63,7 +63,7 @@ const Blogs = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12 pt-39 "
+        className="text-center mb-12 pt-14.5 "
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-purple-400 mb-3">
           All Hoots 🦉

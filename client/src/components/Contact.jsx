@@ -16,7 +16,7 @@ const Contact = () => {
     <div className="relative w-full min-h-screen overflow-hidden text-white">
     
     {/* Background */}
-    <div className="absolute inset-0 -z-10 ">
+    <div className="fixed inset-0 -z-10 ">
       <DarkVeil
         hueShift={314}
         noiseIntensity={0.02}
@@ -27,7 +27,7 @@ const Contact = () => {
       />
     </div>
    <Navbar />
-      <div className="bg-gray-800 w-full max-w-lg rounded-4xl shadow-xl p-8 flex flex-col gap-6 m-auto mt-53 sm:w-[75%]">
+      <div className="bg-gray-800 w-full max-w-lg rounded-4xl shadow-xl p-8 flex flex-col gap-6 m-auto mt-18 sm:w-[75%]">
         <h1 className="text-3xl font-extrabold text-purple-400 text-center">
           Contact the Owl 🦉
         </h1>

@@ -12,7 +12,7 @@ const Navbar = () => {
     <div>
       <nav className="fixed w-full top-0 z-50 bg-[#0000003c] backdrop-blur-md shadow-md min-h-[72px]">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-          <div className="flex justify-between items-center min-h-[72px]">
+          <div className="flex justify-around items-center min-h-[72px]">
 
             {/* Logo */}
             <div className="flex items-center gap-3 flex-nowrap">
@@ -30,7 +30,7 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-6 text-white font-semibold text-lg">
+            <div className="hidden lg:flex items-center gap-6 text-white font-semibold text-lg" >
               <Link to="/" className="hover:text-purple-400">Home</Link>
               <Link to="/about" className="hover:text-purple-400">About</Link>
               <Link to="/blogs" className="hover:text-purple-400">Blogs</Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Button */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="text-white"
@@ -112,7 +112,7 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#00000000] backdrop-blur-[10px] px-4 pb-4 space-y-2 rounded-b-4xl"
+              className="lg:hidden bg-[#00000034] backdrop-blur-xs px-4 pb-4 space-y-2 rounded-b-4xl w-54 absolute right-13"
             >
               {["/", "/about", "/blogs", "/contact", "/members"].map((path, i) => (
                 <Link

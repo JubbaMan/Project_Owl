@@ -65,8 +65,8 @@ const Members = () => {
                   key={member.id}
                   initial={{ opacity: 0, scale: 0.9, y: 5 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-101 hover:shadow-2xl hover:from-gray-500 hover:to-gray-600"
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-101 hover:shadow-2xl hover:from-gray-800 hover:to-gray-900"
                 >
                   <img
                     src={member.profile_img || "/default-avatar.png"}

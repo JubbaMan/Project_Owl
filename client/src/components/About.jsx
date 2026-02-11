@@ -35,7 +35,7 @@ const About = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="max-w-3xl mx-auto bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl p-8 space-y-6"
+        className="max-w-3xl mx-auto bg-gray-800/60 backdrop-blur-md rounded-2xl shadow-xl p-8 space-y-6 m-2.5"
       >
         <p className="text-gray-300 text-lg leading-relaxed">
           <span className="text-purple-400 font-semibold">The Owl’s Hub</span> is a

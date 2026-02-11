@@ -45,9 +45,9 @@ const Signin = () => {
     <>
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-700 via-purple-900 to-black">
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: -7 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
         className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md"
       >
         {/* Heading */}

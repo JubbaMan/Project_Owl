@@ -63,10 +63,10 @@ const Members = () => {
               {members.map((member, index) => (
                 <motion.div
                   key={member.id}
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  initial={{ opacity: 0, scale: 0.9, y: 5 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-3xl shadow-xl p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:from-purple-700 hover:to-purple-800"
+                  className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-xl p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-101 hover:shadow-2xl hover:from-gray-500 hover:to-gray-600"
                 >
                   <img
                     src={member.profile_img || "/default-avatar.png"}

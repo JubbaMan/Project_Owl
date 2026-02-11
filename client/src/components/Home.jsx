@@ -54,7 +54,7 @@ const Home = () => {
         className="flex flex-col items-center justify-center text-center py-24 px-4 pt-15"
       >
       
-        <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-purple-400 drop-shadow-lg">
+        <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-purple-400 drop-shadow-lg pt-25">
           Welcome, Night Owl
         </h1>
         <p className="text-gray-300 max-w-xl mb-8 text-lg md:text-xl">
@@ -79,7 +79,7 @@ const Home = () => {
       </motion.div>
 
       {/* Hoots Section */}
-      <div className="px-6 md:px-20 py-12">
+      <div className="px-6 md:px-20 py-12 mt-15 mb-20">
         <h2 className="text-3xl font-bold text-purple-300 mb-6 text-center">
           Latest Hoots
         </h2>
@@ -135,7 +135,7 @@ const Home = () => {
 
       {/* Footer CTA */}
       {!user && (
-        <div className="bg-transparent py-12 text-center">
+        <div className="bg-transparent py-12 text-center mb-22.5">
           <h2 className="text-2xl md:text-3xl font-bold text-purple-400 mb-4">
             Join the Night Owl Community
           </h2>

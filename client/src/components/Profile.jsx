@@ -4,62 +4,59 @@ import { useAuth } from "../context/AuthContext";
 const API_URL = "https://project-owl.onrender.com";
 
 const Profile = () => {
-  const { user, setUser } = useAuth();
 
+  const { user, token, login } = useAuth();
   const [fullName, setFullName] = useState(user?.fullName || "");
   const [bio, setBio] = useState(user?.bio || "");
   const [profileImg, setProfileImg] = useState(user?.profile_img || "");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-const handleUpdate = async (e) => {
-  e.preventDefault();
 
-  if (!user || !user.access_token) {
-    setMessage("Auth error. Please re-login.");
-    return;
-  }
+  const handleUpdate = async (e) => {
+    e.preventDefault();
 
-  setLoading(true);
-  setMessage("");
-
-  try {
-    const res = await fetch(`${API_URL}/users/me`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.access_token}`,
-      },
-      body: JSON.stringify({
-        fullName,
-        bio,
-        profile_img: profileImg,
-      }),
-    });
-
-    const data = await res.json();
-
-    if (res.status === 401) {
-      setMessage("Session expired. Please re-login.");
+    if (!token) {
+      setMessage("Auth error. Please re-login.");
       return;
     }
 
-    if (!res.ok) throw new Error(data.error || "Update failed");
+    setLoading(true);
+    setMessage("");
 
-    setUser((prev) => ({
-      ...prev,
-      fullName: data.user.fullName,
-      bio: data.user.bio,
-      profile_img: data.user.profile_img,
-    }));
+    try {
+      const res = await fetch(`${API_URL}/users/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          fullName,
+          bio,
+          profile_img: profileImg,
+        }),
+      });
 
-    setMessage("Profile updated successfully ✅");
-  } catch (err) {
-    setMessage(err.message || "Something went wrong");
-  } finally {
-    setLoading(false);
-  }
-};
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Update failed");
+
+      // update context properly
+      login({
+        ...user,
+        ...data.user,
+        access_token: token,
+      });
+
+      setMessage("Profile updated successfully ✅");
+    } catch (err) {
+      setMessage(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-violet-900 via-purple-900 to-black p-6">

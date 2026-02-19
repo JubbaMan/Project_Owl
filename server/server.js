@@ -117,6 +117,7 @@ app.post("/signin", async (req, res) => {
 });
 
 // Get all users (members)
+// Get all users (members)
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find({})
@@ -129,16 +130,13 @@ app.get("/users", async (req, res) => {
       username: user.personal_info.username,
       profile_img:
         user.personal_info.profile_img || "/default-avatar.png",
+      bio: user.personal_info.bio || "", // ✅ now included
     }));
 
-    res.status(200).json({
-      users: formattedUsers,
-    });
+    res.status(200).json({ users: formattedUsers });
   } catch (err) {
     console.error("Failed to fetch users:", err);
-    res.status(500).json({
-      error: "Failed to fetch members",
-    });
+    res.status(500).json({ error: "Failed to fetch members" });
   }
 });
 

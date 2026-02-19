@@ -14,6 +14,12 @@ const Profile = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+
+    if (!setUser) {
+      setMessage("Auth error. Please re-login.");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
 
@@ -22,7 +28,7 @@ const Profile = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user.access_token}`,
+          Authorization: `Bearer ${user?.access_token}`,
         },
         body: JSON.stringify({
           fullName,
@@ -33,14 +39,14 @@ const Profile = () => {
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error);
+      if (!res.ok) throw new Error(data.error || "Update failed");
 
-      setUser({
-        ...user,
+      setUser((prev) => ({
+        ...prev,
         fullName: data.user.fullName,
         bio: data.user.bio,
         profile_img: data.user.profile_img,
-      });
+      }));
 
       setMessage("Profile updated successfully ✅");
     } catch (err) {
@@ -51,66 +57,76 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-violet-700 flex justify-center items-start py-10">
-      <div className="bg-transparent backdrop-blur-sm shadow-lg rounded-xl p-8 w-full max-w-lg">
-        <h1 className="text-2xl font-bold mb-6 text-center">Your Profile</h1>
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-violet-900 via-purple-900 to-black p-6">
+      <div className="w-full max-w-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl rounded-3xl p-8 text-white">
 
-        <div className="flex flex-col items-center mb-6">
+        <h1 className="text-3xl font-bold text-center mb-8 tracking-wide">
+          👤 Your Profile
+        </h1>
+
+        {/* Profile Preview */}
+        <div className="flex flex-col items-center mb-8">
           <img
             src={
               profileImg ||
               "https://cdn-icons-png.flaticon.com/512/149/149071.png"
             }
             alt="Profile"
-            className="w-24 h-24 rounded-full object-cover mb-3 border"
+            className="w-28 h-28 rounded-full object-cover border-4 border-purple-500 shadow-lg shadow-purple-700/40 transition hover:scale-105"
           />
-          <p className="text-gray-200">@{user?.username}</p>
+          <p className="mt-3 text-gray-300">@{user?.username}</p>
         </div>
 
-        <form onSubmit={handleUpdate} className="space-y-4">
+        {/* Form */}
+        <form onSubmit={handleUpdate} className="space-y-6">
+
           <div>
-            <label className="block text-sm font-medium">Full Name</label>
+            <label className="block text-sm mb-2 text-gray-300">
+              Full Name
+            </label>
             <input
               type="text"
-              className="w-full border rounded-lg p-2"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium">Bio</label>
+            <label className="block text-sm mb-2 text-gray-300">
+              Bio
+            </label>
             <textarea
-              className="w-full border rounded-lg p-2"
               rows="3"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium">
+            <label className="block text-sm mb-2 text-gray-300">
               Profile Image URL
             </label>
             <input
               type="text"
-              className="w-full border rounded-lg p-2"
               value={profileImg}
               onChange={(e) => setProfileImg(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-purple-900 text-white py-2 rounded-2xl hover:opacity-90 hover:scale-[1.1] transition"
+            className="w-full bg-gradient-to-r from-purple-600 to-violet-600 py-3 rounded-2xl font-semibold shadow-lg hover:scale-105 hover:shadow-purple-700/40 transition duration-300 disabled:opacity-50"
           >
             {loading ? "Updating..." : "Save Changes"}
           </button>
         </form>
 
         {message && (
-          <p className="text-center mt-4 text-sm text-gray-300">
+          <p className="text-center mt-6 text-sm text-gray-300 animate-pulse">
             {message}
           </p>
         )}

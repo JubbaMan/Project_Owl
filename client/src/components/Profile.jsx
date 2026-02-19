@@ -12,49 +12,54 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+const handleUpdate = async (e) => {
+  e.preventDefault();
 
-    if (!setUser) {
-      setMessage("Auth error. Please re-login.");
+  if (!user || !user.access_token) {
+    setMessage("Auth error. Please re-login.");
+    return;
+  }
+
+  setLoading(true);
+  setMessage("");
+
+  try {
+    const res = await fetch(`${API_URL}/users/me`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.access_token}`,
+      },
+      body: JSON.stringify({
+        fullName,
+        bio,
+        profile_img: profileImg,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 401) {
+      setMessage("Session expired. Please re-login.");
       return;
     }
 
-    setLoading(true);
-    setMessage("");
+    if (!res.ok) throw new Error(data.error || "Update failed");
 
-    try {
-      const res = await fetch(`${API_URL}/users/me`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.access_token}`,
-        },
-        body: JSON.stringify({
-          fullName,
-          bio,
-          profile_img: profileImg,
-        }),
-      });
+    setUser((prev) => ({
+      ...prev,
+      fullName: data.user.fullName,
+      bio: data.user.bio,
+      profile_img: data.user.profile_img,
+    }));
 
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || "Update failed");
-
-      setUser((prev) => ({
-        ...prev,
-        fullName: data.user.fullName,
-        bio: data.user.bio,
-        profile_img: data.user.profile_img,
-      }));
-
-      setMessage("Profile updated successfully ✅");
-    } catch (err) {
-      setMessage(err.message || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
+    setMessage("Profile updated successfully ✅");
+  } catch (err) {
+    setMessage(err.message || "Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-violet-900 via-purple-900 to-black p-6">

@@ -10,6 +10,7 @@ import Blogs from "./components/Blogs";
 import { AuthProvider } from "./context/AuthContext";
 import Contact from "./components/Contact";
 import Members from "./components/Members";
+import Profile from "./components/Profile";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/members" element={<Members />} />
+          <Route path="/users/me" element={<Profile />} />
         </Routes>
       </Router>
     </AuthProvider>

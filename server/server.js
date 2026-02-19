@@ -180,6 +180,34 @@ app.delete("/hoots/:id", authMiddleware, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+// Update user profile
+app.put("/users/me", authMiddleware, async (req, res) => {
+  try {
+    const { fullName, bio, profile_img } = req.body;
+
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    if (fullName) user.personal_info.fullName = fullName;
+    if (bio !== undefined) user.personal_info.bio = bio;
+    if (profile_img !== undefined) user.personal_info.profile_img = profile_img;
+
+    await user.save();
+
+    res.json({
+      message: "Profile updated",
+      user: {
+        id: user._id,
+        username: user.personal_info.username,
+        fullName: user.personal_info.fullName,
+        bio: user.personal_info.bio || "",
+        profile_img: user.personal_info.profile_img || "",
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // Test
 app.get("/", (_, res) => res.send("🦉 Owl server running"));

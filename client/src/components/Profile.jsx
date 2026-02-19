@@ -51,8 +51,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-start py-10">
-      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-lg">
+    <div className="min-h-screen bg-violet-700 flex justify-center items-start py-10">
+      <div className="bg-transparent backdrop-blur-sm shadow-lg rounded-xl p-8 w-full max-w-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Your Profile</h1>
 
         <div className="flex flex-col items-center mb-6">
@@ -64,7 +64,7 @@ const Profile = () => {
             alt="Profile"
             className="w-24 h-24 rounded-full object-cover mb-3 border"
           />
-          <p className="text-gray-600">@{user?.username}</p>
+          <p className="text-gray-200">@{user?.username}</p>
         </div>
 
         <form onSubmit={handleUpdate} className="space-y-4">
@@ -103,14 +103,14 @@ const Profile = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-black text-white py-2 rounded-lg hover:opacity-90 transition"
+            className="w-full bg-purple-900 text-white py-2 rounded-2xl hover:opacity-90 hover:scale-[1.1] transition"
           >
             {loading ? "Updating..." : "Save Changes"}
           </button>
         </form>
 
         {message && (
-          <p className="text-center mt-4 text-sm text-gray-600">
+          <p className="text-center mt-4 text-sm text-gray-300">
             {message}
           </p>
         )}

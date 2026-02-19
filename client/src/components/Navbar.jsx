@@ -49,7 +49,7 @@ const Navbar = () => {
                     exit={{ opacity: 0, y: -8 }}
                     className="flex items-center gap-3"
                   >
-                    <Link to="/profile">
+                    <Link to="/users/me">
                       <img
                         src={user.profile_img || "/default-avatar.png"}
                         alt="Profile"

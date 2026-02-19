@@ -43,10 +43,10 @@ const formatUser = (user) => {
     access_token,
     username: user.personal_info.username,
     fullName: user.personal_info.fullName,
+    bio: user.personal_info.bio || "",
     profile_img: user.personal_info.profile_img || "/default-avatar.png",
   };
 };
-
 const generateUserName = async (email) => {
   let username = email.split("@")[0];
   const exists = await User.exists({ "personal_info.username": username });
